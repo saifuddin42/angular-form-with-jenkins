@@ -1,0 +1,133 @@
+<div class="container">
+    <h3>
+      SURVEY FORM
+    </h3>
+    <h4>
+      Reactive forms in Angular
+    </h4>
+<form novalidate [formGroup] = "surveyForm" (ngSubmit)="submitSurveyForm()">
+    <section class="customer-first-name">
+        
+      <h1>First Name</h1>
+      <input type="text" placeholder="Enter your First Name" formControlName="customerFirstName">
+      <div *ngIf="customerFirstNameControl.errors" class="errors">
+        <div *ngIf="customerFirstNameControl.errors.required && surveyForm.get('customerLastName').touched">
+          Please enter your First name. This is a mandatory field.
+        </div> </div>
+    </section>
+
+    <section class="customer-last-name">
+        <h1>Last Name</h1>
+        <input type="text" placeholder="Enter your Last Name" formControlName="customerLastName">
+        <div *ngIf="customerLastNameControl.errors" class="errors">
+            <div *ngIf="customerLastNameControl.errors.required && surveyForm.get('customerLastName').touched">
+              Please enter your Last name. This is a mandatory field.
+            </div> </div>
+      </section>
+
+      <section class="customer-street-address">
+        <h1>Street Address</h1>
+        <input type="text" placeholder="Enter your Street Address" formControlName="addressstreet">
+      </section>
+
+      <section class="customer-city">
+        <h1>City</h1>
+        <input type="text" placeholder="Enter your City" formControlName="addresscity">
+      </section>
+
+      <section class="customer-state">
+        <h1>State</h1>
+        <input type="text" placeholder="Enter your State" formControlName="addressstate">
+      </section>
+
+      <section class="customer-zip">
+        <h1>Zip</h1>
+        <input type="number" placeholder="Enter your Zipcode" formControlName="addresszip"> 
+      </section>
+
+      <section class="customer-contact-email">
+        <h1>Email</h1>
+        <input type="text" placeholder="Enter your Email ID" formControlName="contactemail">
+        <div *ngIf="contactemailControl.errors" class="errors">
+          <div *ngIf="surveyForm.get('contactemail').touched">
+            Please enter your Email ID in the correct format
+            </div>
+        </div>
+        
+      </section>
+
+      <section class="customer-contact-phone">
+        <h1>Phone Number</h1>
+        <input type="number" placeholder="Enter your Phone Number" formControlName="contactphone">
+      </section>
+
+
+
+    <section class="interest">
+      <h1>How did you become interested in this university?</h1>
+      
+          <input id="interestfriends" type="radio" value="Friends"  formControlName="interest">
+          <label for="interestfriends">Friends</label>
+            <input id="interesttv" type="radio" value="Television" formControlName="interest">
+            <label for="interesttv">Television</label>
+
+            <input id="interestinternet" type="radio" value="Internet"  formControlName="interest">
+            <label for="interestinternet">Internet</label>
+            <input id="interestother" type="radio" value="Other" formControlName="interest">
+            <label for="interestother">Other</label>
+          
+
+
+    </section>
+    <section class="referral">
+      <h1>Likelihood of Referring College to a friend?</h1>
+      <select formControlName="referral">
+        <option value="Likely">Likely</option>
+        <option value="Very Likely">Very Likely</option>
+        <option value="Unlikely">Unlikely</option>
+      </select>
+    </section>
+
+      <section class="like" formGroupName="like">
+        <h1>What did you like most about the cammpus</h1>
+        <ul>
+          <li>
+            <input id="student" type="checkbox" formControlName="student">
+            <label for="student">Student</label>
+          </li>
+          <li>
+            <input id="location" type="checkbox" formControlName="location">
+            <label for="location">Location</label>
+          </li>
+          <li>
+            <input id="campus" type="checkbox" formControlName="campus">
+            <label for="campus">Campus</label>
+          </li>
+          <li>
+            <input id="dorm" type="checkbox" formControlName="dorm">
+            <label for="dorm">Dorm</label>
+          </li>
+          <li>
+            <input id="sports" type="checkbox" formControlName="sports">
+            <label for="sports">Sports</label>
+          </li>
+          <li>
+            <input id="atmosphere" type="checkbox" formControlName="atmosphere">
+            <label for="atmosphere">Atmosphere</label>
+          </li>
+        </ul>
+      </section>
+      
+
+    <button type="submit" [disabled]='!surveyForm.valid'>Submit Feedback</button>
+    <button type="button" (click)="clearForm()">Clear Form</button>
+  </form>
+
+  <!-- Form Data -->
+<section>
+    <hr>
+    <h1>Developers area</h1>
+    <pre>{{ surveyForm.value | json }}</pre>
+  </section>
+
+  </div>
