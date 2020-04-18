@@ -4,11 +4,11 @@
         <groupId>saif</groupId>
         <artifactId>default-id</artifactId>
         <version>1.0.0</version>
-        <name>survey-form</name>
+        <name>angular-app</name>
         <packaging>war</packaging>
 
         <build>
-            <finalName>survey-form</finalName>
+            <finalName>angular-app</finalName>
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

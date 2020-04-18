@@ -42,13 +42,8 @@ export class SurveyFormComponent implements OnInit {
         sports: this.formBuilder.control(null),
         atmosphere: this.formBuilder.control(null)
       }),
-
        interest: this.formBuilder.control(null, Validators.required),
-       referral: this.formBuilder.control('Likely'),
-      // gender: this.formBuilder.control('Male'), // default value setting
-
-      
-
+       referral: this.formBuilder.control('Likely')
     });
 
     this.customerFirstNameControl = this.surveyForm.get('customerFirstName');
