@@ -1,0 +1,23 @@
+{
+    "data": [{
+            "name": "Haramrit",
+            "age": 22
+        },
+        {
+            "name": "Ajit",
+            "age": 25
+        },
+        {
+            "name": "Neel",
+            "age": 23
+        },
+        {
+            "name": "Sawant",
+            "age": 26
+        },
+        {
+            "name": "Daddy",
+            "age": 22
+        }
+    ]
+}
