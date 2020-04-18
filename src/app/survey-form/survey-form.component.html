@@ -5,24 +5,18 @@
     <h4>
       Reactive forms in Angular
     </h4>
-<form novalidate [formGroup] = "surveyForm" (ngSubmit)="submitSurveyForm()">
+    <form [formGroup] = "uploadForm" (ngSubmit)="onSubmit()" >
     <section class="customer-first-name">
         
       <h1>First Name</h1>
       <input type="text" placeholder="Enter your First Name" formControlName="customerFirstName">
-      <div *ngIf="customerFirstNameControl.errors" class="errors">
-        <div *ngIf="customerFirstNameControl.errors.required && surveyForm.get('customerLastName').touched">
-          Please enter your First name. This is a mandatory field.
-        </div> </div>
+          Please enter your First name. This is a mandatory field. 
     </section>
 
     <section class="customer-last-name">
         <h1>Last Name</h1>
         <input type="text" placeholder="Enter your Last Name" formControlName="customerLastName">
-        <div *ngIf="customerLastNameControl.errors" class="errors">
-            <div *ngIf="customerLastNameControl.errors.required && surveyForm.get('customerLastName').touched">
               Please enter your Last name. This is a mandatory field.
-            </div> </div>
       </section>
 
       <section class="customer-street-address">
@@ -48,12 +42,7 @@
       <section class="customer-contact-email">
         <h1>Email</h1>
         <input type="text" placeholder="Enter your Email ID" formControlName="contactemail">
-        <div *ngIf="contactemailControl.errors" class="errors">
-          <div *ngIf="surveyForm.get('contactemail').touched">
             Please enter your Email ID in the correct format
-            </div>
-        </div>
-        
       </section>
 
       <section class="customer-contact-phone">
@@ -61,7 +50,10 @@
         <input type="number" placeholder="Enter your Phone Number" formControlName="contactphone">
       </section>
 
-
+      <section class="customer-contact-phone">
+        <h1>Date</h1>
+        <input type="date" placeholder="Enter your Phone Number" formControlName="Date">
+      </section>
 
     <section class="interest">
       <h1>How did you become interested in this university?</h1>
@@ -88,7 +80,7 @@
       </select>
     </section>
 
-      <section class="like" formGroupName="like">
+      <section>
         <h1>What did you like most about the cammpus</h1>
         <ul>
           <li>
@@ -119,15 +111,15 @@
       </section>
       
 
-    <button type="submit" [disabled]='!surveyForm.valid'>Submit Feedback</button>
-    <button type="button" (click)="clearForm()">Clear Form</button>
+      <button type="submit">Upload</button>
+    <button type="reset">Clear Form</button>
   </form>
 
-  <!-- Form Data -->
+ <!--
 <section>
     <hr>
     <h1>Developers area</h1>
-    <pre>{{ surveyForm.value | json }}</pre>
+    <pre>{{ uploadForm.value | json }}</pre>
   </section>
 
-  </div>
+  </div>*/-->
