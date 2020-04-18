@@ -31,14 +31,13 @@ export class SurveyFormComponent implements OnInit {
         campus: this.formBuilder.control(null),
         dorm: this.formBuilder.control(null),
         sports: this.formBuilder.control(null),
-<<<<<<< HEAD
-        atmosphere: this.formBuilder.control(null)
-      }),
-=======
         atmosphere: this.formBuilder.control(null),
->>>>>>> ae4d34c0b05091eb6178c96bdbfc740ad9d28e98
        interest: this.formBuilder.control(null, Validators.required),
-       referral: this.formBuilder.control('Likely')
+       referral: this.formBuilder.control('Likely'),
+      // gender: this.formBuilder.control('Male'), // default value setting
+
+      
+
     });
 
     
