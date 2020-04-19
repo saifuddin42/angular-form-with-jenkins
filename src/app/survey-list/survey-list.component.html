@@ -1,1 +1,39 @@
-<p>survey-list works!</p>
+<!--<span *ngIf="config">
+    <li *ngFor="let hero of config['data']">
+      Zip : {{hero['ZIP']}},
+      About_Campus: {{hero['abt_Campus']}},
+      City: {{hero['city']}},
+      Date: {{hero['dat']}},
+      E_mail: {{hero['e_Mail']}},
+      First_name: {{hero['first_name']}},
+      id: {{hero['id']}},
+      last_Name: {{hero['last_name']}},
+      Recommendation: {{hero['recommendation']}},
+      State: {{hero['state']}},
+      street_Addr: {{hero['street_Addr']}},
+      tel_no: {{hero['tel_NO']}} ,
+      Uni_Ist:{{hero['uni_Ist']}}
+    </li>
+  </span>-->
+
+
+  
+<h1>All Surveys:</h1>
+  <div *ngFor="let survey of surveys">
+<li>
+        {{survey.id}},
+        {{survey.first_name}},
+        {{survey.last_name}},
+        {{survey.street_Addr}},
+        {{survey.city}},
+        {{survey.state}},
+        {{survey.ZIP}},
+        {{survey.e_Mail}},
+        {{survey.tel_NO}},
+        {{survey.dat}},
+        {{survey.uni_Ist}},
+        {{survey.recommendation}},
+        {{survey.abt_Campus}},
+
+</li>
+  </div>

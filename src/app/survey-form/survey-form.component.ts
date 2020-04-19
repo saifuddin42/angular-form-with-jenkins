@@ -47,6 +47,7 @@ export class SurveyFormComponent implements OnInit {
     const formData = new FormData();
     //var n;
     //n = "State=NY&Tel_NO=1234567";
+    
     var z;
     z="State="
 

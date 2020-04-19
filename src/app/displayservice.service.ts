@@ -10,16 +10,22 @@ export interface Config {
 @Injectable()
 export class DisplayService {
 
-  configUrl = 'assets/testing.json';
+ // configUrl = 'assets/testing.json';
 
   constructor(private httpClient: HttpClient) {
 
    }
 
-  getConfig() {
+   public getNews(){
+    console.log("insidegeNews");
+    return this.httpClient.get(`http://ec2-3-90-139-158.compute-1.amazonaws.com/jersey-quickstart-webapp/webapi/myresource`);
+    
+  }
+
+  /*getConfig() {
     console.log("Did I reach here???");
     return this.httpClient.get(this.configUrl);
-  }
+  }*/
   
   
 
