@@ -2,6 +2,8 @@ FROM tomcat:8.0
 
 MAINTAINER Saifuddin
 
+RUN ng build --prod
+RUN mvn clean package
 COPY target/angular-app.war /usr/local/tomcat/webapps/
 COPY tomcat-users.xml /usr/local/tomcat/conf
 COPY manager.xml /usr/local/tomcat/conf/Catalina/localhost
