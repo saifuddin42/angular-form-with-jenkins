@@ -7,7 +7,7 @@ import { FormGroup, FormBuilder, FormControl, FormArray, Validators } from '@ang
   styleUrls: ['./survey-form.component.css']
 })
 export class SurveyFormComponent implements OnInit {
-  SERVER_URL = "http://ec2-3-82-93-172.compute-1.amazonaws.com/jersey-quickstart-webapp/webapi/myresource/create";
+  SERVER_URL = "http://ec2-3-90-139-158.compute-1.amazonaws.com/jersey-quickstart-webapp/webapi/myresource/create";
   uploadForm: FormGroup;  
   customerFirstNameControl;
   customerLastNameControl;

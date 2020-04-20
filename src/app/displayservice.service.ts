@@ -18,7 +18,7 @@ export class DisplayService {
 
    public getNews(){
     console.log("insidegeNews");
-    return this.httpClient.get('http://ec2-3-82-93-172.compute-1.amazonaws.com/jersey-quickstart-webapp/webapi/myresource');
+    return this.httpClient.get('http://ec2-3-90-139-158.compute-1.amazonaws.com/jersey-quickstart-webapp/webapi/myresource');
     
   }
 
