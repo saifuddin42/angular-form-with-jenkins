@@ -16,24 +16,42 @@
     </li>
   </span>-->
 
+<table>
+  <thead>
+  <tr>
+    
+      <th>User ID</th>
+      <th>First</th>
+      <th>Last</th>
+      <th>Street</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Mobile</th>
+      <th>Email</th>
+      <th>Survey Date</th>
+      <th>Recomendation</th>
+      <th>Like </th>
+      <th>Interest</th>
+    </tr>
+    </thead>
 
-  
-<h1>All Surveys:</h1>
-  <div *ngFor="let survey of surveys">
-<li>
-        {{survey.id}},
-        {{survey.first_name}},
-        {{survey.last_name}},
-        {{survey.street_Addr}},
-        {{survey.city}},
-        {{survey.state}},
-        {{survey.ZIP}},
-        {{survey.e_Mail}},
-        {{survey.tel_NO}},
-        {{survey.dat}},
-        {{survey.uni_Ist}},
-        {{survey.recommendation}},
-        {{survey.abt_Campus}},
+<tbody>
+  <tr *ngFor="let survey of surveys">
+       <td> {{survey.id}}</td>
+       <td> {{survey.first_name}}</td>
+       <td>{{survey.last_name}}</td>
+       <td>{{survey.street_Addr}}</td>
+       <td> {{survey.city}}</td>
+       <td>{{survey.state}}</td>
+       <td>{{survey.ZIP}}</td>
+       <td>{{survey.e_Mail}}</td>
+       <td>{{survey.dat}}</td>
+       <td>{{survey.tel_NO}}</td>
+       <td>{{survey.recommendation}}</td>
+       <td>{{survey.uni_Ist}}</td>
+       <td>{{survey.abt_Campus}}</td>
+      </tr>
+    </tbody>
 
-</li>
-  </div>
+</table>

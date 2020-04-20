@@ -1,75 +1,150 @@
 <div class="container">
-    <h3>
-      SURVEY FORM
-    </h3>
-    <h4>
-      Reactive forms in Angular
-    </h4>
-    <form [formGroup] = "uploadForm" (ngSubmit)="onSubmit()" >
+  <h3>
+    SURVEY FORM
+  </h3>
+  <form novalidate [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
     <section class="customer-first-name">
-        
+
       <h1>First Name</h1>
       <input type="text" placeholder="Enter your First Name" formControlName="customerFirstName">
-          Please enter your First name. This is a mandatory field. 
+      <div
+        *ngIf="customerFirstNameControl.invalid && (customerFirstNameControl.dirty || customerFirstNameControl.touched)"
+        class="errors">
+        <div *ngIf="customerFirstNameControl.errors.required">
+          First Name is required.
+        </div>
+        <div *ngIf="customerFirstNameControl.errors.minlength">
+          Name cannot be more than 30 characters long.
+        </div>
+        <div *ngIf="customerFirstNameControl.errors.minlength">
+          Name must be at least 2 characters long.
+        </div>
+        <div *ngIf="customerFirstNameControl.errors.pattern">
+          Name must have only alphabets
+        </div>
+      </div>
+
     </section>
 
     <section class="customer-last-name">
-        <h1>Last Name</h1>
-        <input type="text" placeholder="Enter your Last Name" formControlName="customerLastName">
-              Please enter your Last name. This is a mandatory field.
-      </section>
+      <h1>Last Name</h1>
+      <input type="text" placeholder="Enter your Last Name" formControlName="customerLastName">
+      <div *ngIf="customerLastNameControl.invalid && (customerLastNameControl.dirty || customerLastNameControl.touched)"
+        class="errors">
+        <div *ngIf="customerLastNameControl.errors.required">
+          Last Name is required.
+        </div>
+        <div *ngIf="customerLastNameControl.errors.minlength">
+          Name cannot be more than 30 characters long.
+        </div>
+        <div *ngIf="customerLastNameControl.errors.minlength">
+          Name must be at least 2 characters long.
+        </div>
+        <div *ngIf="customerLastNameControl.errors.pattern">
+          Name must have only alphabets
+        </div>
+      </div>
+    </section>
 
-      <section class="customer-street-address">
-        <h1>Street Address</h1>
-        <input type="text" placeholder="Enter your Street Address" formControlName="addressstreet">
-      </section>
+    <section class="customer-street-address">
+      <h1>Street Address</h1>
+      <input type="text" placeholder="Enter your Street Address" formControlName="addressstreet">
+      <div *ngIf="addressstreetControl.invalid && (addressstreetControl.dirty || addressstreetControl.touched)"
+        class="errors">
+        <div *ngIf="addressstreetControl.errors.required">
+          Address is required.
+        </div>
+      </div>
+    </section>
 
-      <section class="customer-city">
-        <h1>City</h1>
-        <input type="text" placeholder="Enter your City" formControlName="addresscity">
-      </section>
+    <section class="customer-city">
+      <h1>City</h1>
+      <input type="text" placeholder="Enter your City" formControlName="addresscity">
+      <div *ngIf="addresscityControl.invalid && (addresscityControl.dirty || addresscityControl.touched)"
+        class="errors">
+        <div *ngIf="addresscityControl.errors.required">
+          City is required.
+        </div>
+      </div>
+    </section>
 
-      <section class="customer-state">
-        <h1>State</h1>
-        <input type="text" placeholder="Enter your State" formControlName="addressstate">
-      </section>
+    <section class="customer-state">
+      <h1>State</h1>
+      <input type="text" placeholder="Enter your State" formControlName="addressstate">
+      <div *ngIf="addressstateControl.invalid && (addressstateControl.dirty || addressstateControl.touched)"
+        class="errors">
+        <div *ngIf="addressstateControl.errors.required">
+          Address is required.
+        </div>
+      </div>
+    </section>
 
-      <section class="customer-zip">
-        <h1>Zip</h1>
-        <input type="number" placeholder="Enter your Zipcode" formControlName="addresszip"> 
-      </section>
+    <section class="customer-zip">
+      <h1>Zip</h1>
+      <input type="text" placeholder="Enter your Zipcode" formControlName="addresszip">
+      <div *ngIf="addresszipControl.invalid && (addresszipControl.dirty || addresszipControl.touched)" class="errors">
+        <div *ngIf="addresszipControl.errors.required">
+          Zip is Required
+        </div>
+        <div *ngIf="addresszipControl.errors.minlength || addresszipControl.errors.maxlength ">
+          ZipCode must be a 5 digit number
+        </div>
+        <div *ngIf="addresszipControl.errors.pattern">
+          ZipCode must be a number
+        </div>
+      </div>
+    </section>
 
-      <section class="customer-contact-email">
-        <h1>Email</h1>
-        <input type="text" placeholder="Enter your Email ID" formControlName="contactemail">
-            Please enter your Email ID in the correct format
-      </section>
+    <section class="customer-contact-email">
+      <h1>Email</h1>
+      <input type="text" placeholder="Enter your Email ID" formControlName="contactemail">
+      <div *ngIf="contactemailControl.invalid && (contactemailControl.dirty || contactemailControl.touched)"
+        class="errors">
+        <div *ngIf="contactemailControl.errors.required">
+          Email is Required
+        </div>
+        <div *ngIf="contactemailControl.errors.pattern">
+          Email in the correct format xyz@example.com
+        </div>
+      </div>
 
-      <section class="customer-contact-phone">
-        <h1>Phone Number</h1>
-        <input type="number" placeholder="Enter your Phone Number" formControlName="contactphone">
-      </section>
 
-      <section class="customer-contact-phone">
-        <h1>Date</h1>
-        <input type="date" placeholder="Enter your Phone Number" formControlName="Date">
-      </section>
+    </section>
+
+    <section class="customer-contact-phone">
+      <h1>Phone Number</h1>
+      <input type="text" placeholder="Enter your Phone Number" formControlName="contactphone">
+      <div *ngIf="contactphoneControl.invalid && (contactphoneControl.dirty || contactphoneControl.touched)"
+        class="errors">
+        <div *ngIf="contactphoneControl.errors.required">
+          Phone is Required
+        </div>
+        <div *ngIf="contactphoneControl.errors.minlength || contactphoneControl.errors.maxlength ">
+          Phone must be a 10 digit number
+        </div>
+        <div *ngIf="contactphoneControl.errors.pattern">
+          Phone must be a number
+        </div>
+      </div>
+    </section>
+
+    <section class="customer-contact-phone">
+      <h1>Date</h1>
+      <input type="date" placeholder="Enter your Phone Number" formControlName="Date">
+    </section>
 
     <section class="interest">
       <h1>How did you become interested in this university?</h1>
-      
-          <input id="interestfriends" type="radio" value="Friends"  formControlName="interest">
-          <label for="interestfriends">Friends</label>
-            <input id="interesttv" type="radio" value="Television" formControlName="interest">
-            <label for="interesttv">Television</label>
 
-            <input id="interestinternet" type="radio" value="Internet"  formControlName="interest">
-            <label for="interestinternet">Internet</label>
-            <input id="interestother" type="radio" value="Other" formControlName="interest">
-            <label for="interestother">Other</label>
-          
+      <input id="interestfriends" type="radio" value="Friends" formControlName="interest">
+      <label for="interestfriends">Friends</label>
+      <input id="interesttv" type="radio" value="Television" formControlName="interest">
+      <label for="interesttv">Television</label>
 
-
+      <input id="interestinternet" type="radio" value="Internet" formControlName="interest">
+      <label for="interestinternet">Internet</label>
+      <input id="interestother" type="radio" value="Other" formControlName="interest">
+      <label for="interestother">Other</label>
     </section>
     <section class="referral">
       <h1>Likelihood of Referring College to a friend?</h1>
@@ -80,42 +155,42 @@
       </select>
     </section>
 
-      <section>
-        <h1>What did you like most about the cammpus</h1>
-        <ul>
-          <li>
-            <input type="checkbox"  formControlName="student" value="student">
-            <label for="student" >Student</label>
-          </li>
-          <li>
-            <input id="location" type="checkbox" formControlName="location" value="location">
-            <label for="location">Location</label>
-          </li>
-          <li>
-            <input id="campus" type="checkbox" formControlName="campus" value="cammpus">
-            <label for="campus">Campus</label>
-          </li>
-          <li>
-            <input id="dorm" type="checkbox" formControlName="dorm" value="dorm">
-            <label for="dorm">Dorm</label>
-          </li>
-          <li>
-            <input id="sports" type="checkbox" formControlName="sports" value="sports">
-            <label for="sports">Sports</label>
-          </li>
-          <li>
-            <input id="atmosphere" type="checkbox" formControlName="atmosphere" value="atmosphere">
-            <label for="atmosphere">Atmosphere</label>
-          </li>
-        </ul>
-      </section>
-      
+    <section>
+      <h1>What did you like most about the cammpus</h1>
+      <ul>
+        <li>
+          <input type="checkbox" formControlName="student" value="student">
+          <label for="student">Student</label>
+        </li>
+        <li>
+          <input id="location" type="checkbox" formControlName="location" value="location">
+          <label for="location">Location</label>
+        </li>
+        <li>
+          <input id="campus" type="checkbox" formControlName="campus" value="cammpus">
+          <label for="campus">Campus</label>
+        </li>
+        <li>
+          <input id="dorm" type="checkbox" formControlName="dorm" value="dorm">
+          <label for="dorm">Dorm</label>
+        </li>
+        <li>
+          <input id="sports" type="checkbox" formControlName="sports" value="sports">
+          <label for="sports">Sports</label>
+        </li>
+        <li>
+          <input id="atmosphere" type="checkbox" formControlName="atmosphere" value="atmosphere">
+          <label for="atmosphere">Atmosphere</label>
+        </li>
+      </ul>
+    </section>
 
-      <button type="submit">Upload</button>
+
+    <button type="submit" [disabled]='!uploadForm.valid'>Upload</button>
     <button type="reset">Clear Form</button>
   </form>
 
- <!--
+  <!--
 <section>
     <hr>
     <h1>Developers area</h1>

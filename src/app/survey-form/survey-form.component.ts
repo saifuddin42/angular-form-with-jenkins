@@ -7,8 +7,17 @@ import { FormGroup, FormBuilder, FormControl, FormArray, Validators } from '@ang
   styleUrls: ['./survey-form.component.css']
 })
 export class SurveyFormComponent implements OnInit {
-  SERVER_URL = "http://ec2-18-212-3-61.compute-1.amazonaws.com/jersey-quickstart-webapp/webapi/myresource/create";
+  SERVER_URL = "http://ec2-3-82-93-172.compute-1.amazonaws.com/jersey-quickstart-webapp/webapi/myresource/create";
   uploadForm: FormGroup;  
+  customerFirstNameControl;
+  customerLastNameControl;
+  contactemailControl;
+  addressstreetControl;
+  addresscityControl;
+  addressstateControl;
+  addresszipControl;
+  contactphoneControl;
+
 
   constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) { 
     
@@ -17,14 +26,16 @@ export class SurveyFormComponent implements OnInit {
 
   ngOnInit() {
     this.uploadForm = new FormGroup({
-      customerFirstName: new FormControl(null,Validators.required),
-      customerLastName: new FormControl(null,Validators.required), // same as above but expects null by default
-      addressstreet: new FormControl(null),
-      addresscity: new FormControl(null),
-      addressstate: new FormControl(null),
-      addresszip: new FormControl(null),
-      contactphone: new FormControl(null),
-      contactemail: new FormControl(null),
+      customerFirstName: new FormControl(null,[Validators.required, Validators.minLength(2),
+        Validators.maxLength(30),Validators.pattern("^[a-zA-Z]*$")]),
+      customerLastName: new FormControl(null,[Validators.required, Validators.minLength(2),
+        Validators.maxLength(30),Validators.pattern("^[a-zA-Z]*$")]), 
+      addressstreet: new FormControl(null,Validators.required),
+      addresscity: new FormControl(null,Validators.required),
+      addressstate: new FormControl(null,Validators.required),
+      addresszip: new FormControl(null,[Validators.required,Validators.minLength(5),Validators.maxLength(5),Validators.pattern("^[0-9]*$") ]),
+      contactphone: new FormControl(null,[Validators.required,Validators.minLength(10),Validators.maxLength(10),Validators.pattern("^[0-9]*$") ]),
+      contactemail: new FormControl(null,[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
       Date: new FormControl(null),
         student: new FormControl(null),
         location: this.formBuilder.control(null),
@@ -32,14 +43,23 @@ export class SurveyFormComponent implements OnInit {
         dorm: this.formBuilder.control(null),
         sports: this.formBuilder.control(null),
         atmosphere: this.formBuilder.control(null),
-       interest: this.formBuilder.control(null, Validators.required),
+       interest: this.formBuilder.control('Other'),
        referral: this.formBuilder.control('Likely'),
-      // gender: this.formBuilder.control('Male'), // default value setting
 
       
 
     });
 
+    this.customerFirstNameControl = this.uploadForm.get('customerFirstName');
+    this.customerLastNameControl = this.uploadForm.get('customerLastName');
+    this.contactemailControl=this.uploadForm.get('contactemail');
+    this.addressstreetControl=this.uploadForm.get('addressstreet');
+    this.addresscityControl=this.uploadForm.get('addresscity');
+    this.addressstateControl=this.uploadForm.get('addressstate');
+    this.addresszipControl=this.uploadForm.get('addresszip');
+    this.contactphoneControl=this.uploadForm.get('contactphone');
+    this.contactemailControl=this.uploadForm.get('contactemail');
+    
     
    }
 

@@ -1,0 +1,23 @@
+table {
+  border-collapse: collapse;
+  border-spacing: 0.5rem;
+  width:100%;
+  table-layout: fixed;
+
+}
+
+tbody {
+  font: normal medium/1.4 sans-serif;
+}
+
+th, td{
+  border: 1px solid black;
+  padding: 0.5rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  
+}
+
+
+
