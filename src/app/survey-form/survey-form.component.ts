@@ -7,7 +7,7 @@ import { FormGroup, FormBuilder, FormControl, FormArray, Validators } from '@ang
   styleUrls: ['./survey-form.component.css']
 })
 export class SurveyFormComponent implements OnInit {
-  SERVER_URL = "http://ec2-3-90-139-158.compute-1.amazonaws.com/jersey-quickstart-webapp/webapi/myresource/create";
+  SERVER_URL = "http://ec2-18-212-3-61.compute-1.amazonaws.com/jersey-quickstart-webapp/webapi/myresource/create";
   uploadForm: FormGroup;  
 
   constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) { 
@@ -26,7 +26,7 @@ export class SurveyFormComponent implements OnInit {
       contactphone: new FormControl(null),
       contactemail: new FormControl(null),
       Date: new FormControl(null),
-        student: this.formBuilder.control(null),
+        student: new FormControl(null),
         location: this.formBuilder.control(null),
         campus: this.formBuilder.control(null),
         dorm: this.formBuilder.control(null),
@@ -50,6 +50,67 @@ export class SurveyFormComponent implements OnInit {
     
     var z;
     z="State="
+    var abt_global = "";
+    var abt_us = "";
+    var  Student =this.uploadForm.get('student').value;
+    var Loc =this.uploadForm.get('location').value;
+    var campus =this.uploadForm.get('campus').value;
+    var dorm =this.uploadForm.get('dorm').value;
+    var sports =this.uploadForm.get('sports').value;
+    var atmos =this.uploadForm.get('atmosphere').value;
+    
+    if (Student== null){
+      Student = false;
+    }
+    
+    if (Loc== null){
+      Loc = false;
+    }
+    
+    if (campus== null){
+      campus = false;
+    }
+    
+    if (dorm== null){
+      dorm = false;
+    }
+    
+    if (sports== null){
+      sports = false;
+    }
+    
+    if (atmos== null){
+      atmos = false;
+    }
+    
+    
+
+    if(Student.toString().localeCompare('true') == 0)
+    {
+      Student = "Student";
+    }
+    if( Loc.toString().localeCompare('true') == 0)
+    {
+      Loc = "Location";
+    }
+    if (campus.toString().localeCompare('true') == 0)
+    { campus = "campus";
+    }
+    if(dorm.toString().localeCompare('true') == 0)
+    {
+       dorm ="Dorm";
+    }
+    if(sports.toString().localeCompare('true') == 0) 
+    {
+      sports = "sports";
+    }
+    if(atmos.toString().localeCompare('true') == 0)
+    {
+      atmos = "atmosphere";
+    }
+        abt_global= abt_us.concat(Student,",",Loc,",",campus,",",dorm,",",sports,",",atmos);
+
+
 
     var res = z.concat(this.uploadForm.get('addressstate').value,
     "&","Tel_NO=",this.uploadForm.get('contactphone').value,
@@ -60,7 +121,7 @@ export class SurveyFormComponent implements OnInit {
     "&","Zip=",this.uploadForm.get('addresszip').value,
     "&","E_Mail=",this.uploadForm.get('contactemail').value,
     "&","Dat=",this.uploadForm.get('Date').value,
-    "&","Abt_Campus=",this.uploadForm.get('student').value,
+    "&","Abt_Campus=",abt_global,
     "&","Uni_Ist=",this.uploadForm.get('interest').value,
     "&","Recommendation=",this.uploadForm.get('referral').value);
 
@@ -83,7 +144,9 @@ export class SurveyFormComponent implements OnInit {
       (err) => console.log(err)
     );
 
-    alert(res);
+
+      
+    alert(this.uploadForm.get('student').value);
     //alert(this.uploadForm.get('student').value)
   }
 }
